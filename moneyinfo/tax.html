@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko" data-base="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>세금·연말정산 — 머니인포</title>
+  <meta name="description" content="연말정산·종합소득세·부가세·절세팁 등 세금 최신 정보. 환급 극대화 방법을 확인하세요.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script src="js/main.js"></script>
+<script>
+  MoneyInfo.injectHeader('tax.html');
+  MoneyInfo.injectTicker();
+</script>
+
+<div class="intro-section">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">홈</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="current" style="color:#11243a">세금·연말정산</span>
+    </nav>
+    <h1 class="intro-title">세금·연말정산</h1>
+    <p class="intro-desc">연말정산·종합소득세·부가세 신고와 절세 전략을 알기 쉽게 정리했습니다. 13월의 월급을 놓치지 마세요.</p>
+    <div class="popular-chips" style="margin-top:4px">
+      <span class="topic-chip chip" data-topic="전체">전체</span>
+      <span class="topic-chip chip" data-topic="연말정산">연말정산</span>
+      <span class="topic-chip chip" data-topic="종합소득세">종합소득세</span>
+      <span class="topic-chip chip" data-topic="부가세">부가세</span>
+      <span class="topic-chip chip" data-topic="절세팁">절세팁</span>
+    </div>
+  </div>
+</div>
+
+<section class="content-section">
+  <div class="container">
+    <div id="featured-wrap"></div>
+    <p class="articles-hd">최신 글</p>
+    <div class="articles-grid" id="rest-grid"></div>
+    <div class="load-more-wrap"><button class="load-more-btn">글 더보기</button></div>
+    <div style="display:none" aria-hidden="true">
+      <article data-topic="연말정산" data-date="2026.06.21" data-readtime="5분"
+        data-title="연말정산 미리보기로 13월의 월급 늘리는 공제 7가지"
+        data-excerpt="지금 챙겨야 환급으로 돌아오는 공제 항목을 우선순위로 짚었습니다."></article>
+      <article data-topic="종합소득세" data-date="2026.06.20" data-readtime="5분"
+        data-title="5월이 지나도 끝이 아니다 — 종합소득세 기한후신고 방법"
+        data-excerpt="가산세를 줄이는 기한후신고 절차와 필요 서류를 정리했습니다."></article>
+      <article data-topic="절세팁" data-date="2026.06.19" data-readtime="4분"
+        data-title="신용카드 vs 체크카드, 소득공제 황금비율 정리"
+        data-excerpt="총급여 대비 사용액 구간별로 공제를 극대화하는 방법입니다."></article>
+      <article data-topic="부가세" data-date="2026.06.18" data-readtime="4분"
+        data-title="1기 부가가치세 예정고지 대상과 납부 일정"
+        data-excerpt="예정고지 금액 확인 방법과 자진납부 시 유의점을 설명합니다."></article>
+      <article data-topic="연말정산" data-date="2026.06.17" data-readtime="5분"
+        data-title="월세 세액공제, 무주택 직장인이 놓치기 쉬운 조건"
+        data-excerpt="총급여·주택 요건과 제출 서류, 경정청구로 환급받는 법까지."></article>
+      <article data-topic="절세팁" data-date="2026.06.16" data-readtime="5분"
+        data-title="ISA 만기 자금, 연금계좌 이전으로 세금 줄이는 법"
+        data-excerpt="전환 한도와 추가 세액공제, 이전 신청 절차를 정리했습니다."></article>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const ACCENT = '#11243a';
+  const ACCENT_BG = '#eef1f5';
+
+  function buildFeatured(a) {
+    return `<div class="featured-card" style="cursor:pointer">
+      <div class="featured-meta">
+        <span class="badge-new" style="background:${ACCENT}">최신</span>
+        <span class="topic-pill" style="color:${ACCENT};background:${ACCENT_BG}">${a.topic}</span>
+        <span class="article-date">${a.date}</span>
+      </div>
+      <h2 class="featured-title">${a.title}</h2>
+      <p class="featured-excerpt">${a.excerpt}</p>
+      <p class="article-byline">${a.readtime} 읽기 · 머니인포 편집팀</p>
+    </div>`;
+  }
+
+  function buildCard(a) {
+    return `<div class="article-card" style="cursor:pointer">
+      <div class="article-card-meta">
+        <span class="topic-pill" style="color:${ACCENT};background:${ACCENT_BG}">${a.topic}</span>
+        <span class="article-date">${a.date}</span>
+      </div>
+      <h3 class="article-title">${a.title}</h3>
+      <p class="article-excerpt">${a.excerpt}</p>
+      <p class="article-read">${a.readtime} 읽기</p>
+    </div>`;
+  }
+
+  const rawArticles = Array.from(document.querySelectorAll('[data-title]')).map(el => ({
+    topic: el.dataset.topic, date: el.dataset.date, readtime: el.dataset.readtime,
+    title: el.dataset.title, excerpt: el.dataset.excerpt,
+  }));
+
+  function render(topic) {
+    const filtered = topic === '전체' ? rawArticles : rawArticles.filter(a => a.topic === topic);
+    if (!filtered.length) return;
+    document.getElementById('featured-wrap').innerHTML = buildFeatured(filtered[0]);
+    document.getElementById('rest-grid').innerHTML = filtered.slice(1).map(buildCard).join('');
+    document.querySelectorAll('.topic-chip').forEach(c => {
+      const isActive = c.dataset.topic === topic;
+      c.style.color = isActive ? ACCENT : '';
+      c.style.background = isActive ? ACCENT_BG : '';
+      c.style.borderColor = isActive ? ACCENT : '';
+    });
+  }
+
+  document.querySelectorAll('.topic-chip').forEach(chip => {
+    chip.addEventListener('click', () => render(chip.dataset.topic));
+  });
+  render('전체');
+})();
+</script>
+<script>MoneyInfo.injectFooter();</script>
+</body>
+</html>

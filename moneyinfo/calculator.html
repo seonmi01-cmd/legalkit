@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko" data-base="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>금융 계산기 41종 — 머니인포</title>
+  <meta name="description" content="취득세·연봉 실수령액·연말정산·대출이자 등 금융 계산기 41종. 8개 분야 검색과 필터로 빠르게 찾으세요.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script src="js/main.js"></script>
+<script>
+  MoneyInfo.injectHeader('calculator.html');
+  MoneyInfo.injectTicker();
+</script>
+
+<!-- ===== 인트로 ===== -->
+<div class="intro-section">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">홈</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="current">계산기</span>
+    </nav>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+      <h1 class="intro-title" style="margin:0">금융 계산기</h1>
+      <span style="display:inline-flex;align-items:center;padding:4px 11px;border-radius:5px;font-size:12.5px;font-weight:700;background:#e9f8f1;color:#0ca678;border:1px solid #c4ebda">41종 · 7개 분야</span>
+    </div>
+    <p class="intro-desc">취득세부터 연봉 실수령액, 연말정산까지. 41종의 금융 계산기로 복잡한 계산을 1분 안에 끝내세요.</p>
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 20 20" fill="none" stroke="#5b6876" stroke-width="2" stroke-linecap="round">
+        <circle cx="8.5" cy="8.5" r="5.5"/>
+        <line x1="13" y1="13" x2="18" y2="18"/>
+      </svg>
+      <input type="text" class="search-input" id="calc-search-input" placeholder="계산기 검색 (예: 연봉 실수령액, 취득세)" autocomplete="off">
+      <button class="search-btn" onclick="document.getElementById('calc-search-input').dispatchEvent(new Event('input'))">검색</button>
+    </div>
+    <div class="popular-chips">
+      <span class="popular-label">인기 검색</span>
+      <span class="chip">연봉 실수령액</span>
+      <span class="chip">취득세</span>
+      <span class="chip">퇴직금</span>
+      <span class="chip">양도소득세</span>
+      <span class="chip">전월세 전환</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 검색 결과 정보 ===== -->
+<div class="container" style="padding-top:16px">
+  <div class="search-results-info" id="search-results-info">
+    <span id="match-count"></span>
+    <button class="clear-btn" id="clear-search">초기화</button>
+  </div>
+</div>
+
+<!-- ===== 스티키 분야 바로가기 ===== -->
+<nav class="sticky-cat-nav" id="sticky-cat-nav">
+  <div class="sticky-cat-inner">
+    <a href="#cat-budongsan" class="cat-chip">부동산 7</a>
+    <a href="#cat-jikjang" class="cat-chip">직장인·4대보험 6</a>
+    <a href="#cat-segeum" class="cat-chip">세금·신고 11</a>
+    <a href="#cat-daechul" class="cat-chip">대출·금융 4</a>
+    <a href="#cat-investment" class="cat-chip">투자·절세 4</a>
+    <a href="#cat-cheongnyeon" class="cat-chip">청년·청약 4</a>
+    <a href="#cat-gajok" class="cat-chip">가족·생활 5</a>
+  </div>
+</nav>
+
+<!-- ===== 분야별 카드 그리드 ===== -->
+<div class="container" style="padding-top:0;padding-bottom:64px">
+  <div class="empty-state" id="empty-state">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#c0cbd6" stroke-width="2" stroke-linecap="round">
+      <circle cx="17" cy="17" r="11"/><line x1="26" y1="26" x2="36" y2="36"/>
+    </svg>
+    <p>검색 결과가 없습니다. 다른 키워드로 검색해 보세요.</p>
+  </div>
+  <div id="calc-sections"></div>
+</div>
+
+<script src="js/calculator-search.js"></script>
+<script>
+  MoneyInfo.injectFooter();
+
+  // Handle URL query param
+  const urlParams = new URLSearchParams(window.location.search);
+  const q = urlParams.get('q');
+  if (q) {
+    const input = document.getElementById('calc-search-input');
+    if (input) {
+      input.value = q;
+      input.dispatchEvent(new Event('input'));
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  .calc-section { scroll-margin-top: 140px; }
+</style>
+</body>
+</html>

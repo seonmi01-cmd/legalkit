@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko" data-base="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>머니인포 — 금융 계산기 41종 · 최신 금융 정보</title>
+  <meta name="description" content="취득세·연봉 실수령액·연말정산 등 금융 계산기 41종과 정부지원금·세금·부동산·재테크·노후 최신 정보를 한 곳에서.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script src="js/main.js"></script>
+<script>
+  MoneyInfo.injectHeader('');
+  MoneyInfo.injectTicker();
+</script>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="hero-grid">
+    <!-- Left -->
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="logo-dot" style="background:var(--mint)"></span>
+        금융 계산기 41종 · 매일 업데이트
+      </div>
+      <h1 class="hero-h1">복잡한 돈 계산,<br>머니인포에서 <span class="mint">1분</span>이면 끝납니다</h1>
+      <p class="hero-desc">취득세·연봉 실수령액·연말정산·대출이자까지. 41종의 금융 계산기와 매일 업데이트되는 금융 정보를 한 곳에서 확인하세요.</p>
+      <div class="hero-search-wrap">
+        <svg class="hero-search-icon" viewBox="0 0 20 20" fill="none" stroke="#5b6876" stroke-width="2" stroke-linecap="round">
+          <circle cx="8.5" cy="8.5" r="5.5"/>
+          <line x1="13" y1="13" x2="18" y2="18"/>
+        </svg>
+        <input type="text" class="hero-search-input" id="hero-search" placeholder="예) 연봉 5,000만원 실수령액이 궁금해요" autocomplete="off">
+        <button class="hero-search-btn" onclick="heroSearch()">검색</button>
+      </div>
+      <div class="hero-popular">
+        <span class="hero-popular-label">인기 검색</span>
+        <span class="hero-chip" onclick="goSearch('연봉 실수령액')">연봉 실수령액</span>
+        <span class="hero-chip" onclick="goSearch('취득세')">취득세</span>
+        <span class="hero-chip" onclick="goSearch('퇴직금')">퇴직금</span>
+      </div>
+    </div>
+    <!-- Right: Top 5 -->
+    <div>
+      <div class="top5-card">
+        <div class="top5-title">🔥 실시간 인기 계산기 TOP 5</div>
+        <ul class="top5-list">
+          <li class="top5-item">
+            <span class="top5-rank">1</span>
+            <div class="top5-info"><div class="top5-name">연봉 실수령액</div><div class="top5-cat">직장인·4대보험</div></div>
+          </li>
+          <li class="top5-item">
+            <span class="top5-rank">2</span>
+            <div class="top5-info"><div class="top5-name">취득세</div><div class="top5-cat">부동산</div></div>
+          </li>
+          <li class="top5-item">
+            <span class="top5-rank">3</span>
+            <div class="top5-info"><div class="top5-name">양도소득세</div><div class="top5-cat">세금·신고</div></div>
+          </li>
+          <li class="top5-item">
+            <span class="top5-rank">4</span>
+            <div class="top5-info"><div class="top5-name">퇴직금</div><div class="top5-cat">직장인·4대보험</div></div>
+          </li>
+          <li class="top5-item">
+            <span class="top5-rank">5</span>
+            <div class="top5-info"><div class="top5-name">전월세 전환</div><div class="top5-cat">부동산</div></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 분야별 계산기 ===== -->
+<section class="calc-home-section">
+  <div class="calc-home-inner">
+    <div class="section-hd">
+      <h2 class="section-title">분야별 계산기</h2>
+      <a href="calculator.html" class="section-link">전체 41종 보기 →</a>
+    </div>
+    <!-- 부동산 -->
+    <div style="margin-bottom:40px">
+      <div class="calc-cat-hd">
+        <span class="calc-cat-bar"></span>
+        <span class="calc-cat-name">부동산</span>
+        <span class="calc-cat-count">7종</span>
+      </div>
+      <div class="calc-grid">
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">취득세</div><div class="calc-card-desc">주택·부동산 매입 시 취득세 계산</div></a>
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">중개수수료</div><div class="calc-card-desc">매매·전월세 중개보수 상한 계산</div></a>
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">전월세 전환</div><div class="calc-card-desc">전세↔월세 전환율로 환산</div></a>
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">임대수익률</div><div class="calc-card-desc">임대 투자 연 수익률 계산</div></a>
+      </div>
+    </div>
+    <!-- 직장인 -->
+    <div style="margin-bottom:40px">
+      <div class="calc-cat-hd">
+        <span class="calc-cat-bar"></span>
+        <span class="calc-cat-name">직장인·4대보험</span>
+        <span class="calc-cat-count">6종</span>
+      </div>
+      <div class="calc-grid">
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">연봉 실수령액</div><div class="calc-card-desc">4대보험·세금 제외 실수령액</div></a>
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">실업급여</div><div class="calc-card-desc">수급 기간·일액 계산</div></a>
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">퇴직금</div><div class="calc-card-desc">평균임금 기준 퇴직금 계산</div></a>
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">건강보험료</div><div class="calc-card-desc">직장·지역·피부양자 보험료</div></a>
+      </div>
+    </div>
+    <!-- 세금 -->
+    <div style="margin-bottom:40px">
+      <div class="calc-cat-hd">
+        <span class="calc-cat-bar"></span>
+        <span class="calc-cat-name">세금·신고</span>
+        <span class="calc-cat-count">11종</span>
+      </div>
+      <div class="calc-grid">
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">연말정산</div><div class="calc-card-desc">환급·추가납부액 계산</div></a>
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">종합소득세</div><div class="calc-card-desc">누진세율 기준 소득세 계산</div></a>
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">양도소득세</div><div class="calc-card-desc">양도차익 세액 계산</div></a>
+        <a href="calculator.html" class="calc-card"><div class="calc-card-name">증여세</div><div class="calc-card-desc">증여재산 세액 계산</div></a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:8px">
+      <a href="calculator.html" style="display:inline-flex;align-items:center;gap:8px;padding:14px 40px;border-radius:6px;border:1.5px solid #dde3e8;font-size:15px;font-weight:600;color:#5b6876;background:#fff;transition:all .15s" onmouseover="this.style.borderColor='#0ca678';this.style.color='#0ca678'" onmouseout="this.style.borderColor='#dde3e8';this.style.color='#5b6876'">전체 41종 계산기 보기 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 오늘의 최신 글 ===== -->
+<section class="latest-section">
+  <div class="latest-inner">
+    <div class="section-hd">
+      <h2 class="section-title">오늘의 최신 글</h2>
+      <a href="gov-support.html" class="section-link">더 보기 →</a>
+    </div>
+    <div class="latest-grid">
+      <a href="gov-support.html" class="latest-card">
+        <div class="latest-card-tag" style="color:#0ca678;background:#e9f8f1">정부지원금</div>
+        <div class="latest-card-title">2026년 청년도약계좌, 5년 만기 수령액과 가입 조건 총정리</div>
+        <div class="latest-card-date">2026.06.21</div>
+      </a>
+      <a href="tax.html" class="latest-card">
+        <div class="latest-card-tag" style="color:#11243a;background:#eef1f5">세금·연말정산</div>
+        <div class="latest-card-title">연말정산 미리보기로 13월의 월급 늘리는 공제 7가지</div>
+        <div class="latest-card-date">2026.06.21</div>
+      </a>
+      <a href="real-estate.html" class="latest-card">
+        <div class="latest-card-tag" style="color:#0c8599;background:#e6f4f6">부동산</div>
+        <div class="latest-card-title">2026년 달라지는 취득세·종부세, 1주택자 체크포인트</div>
+        <div class="latest-card-date">2026.06.21</div>
+      </a>
+      <a href="invest.html" class="latest-card">
+        <div class="latest-card-tag" style="color:#a8761a;background:#f8f1e2">재테크</div>
+        <div class="latest-card-title">6월 셋째 주 예금금리 비교 — 연 4%대 특판 어디에</div>
+        <div class="latest-card-date">2026.06.21</div>
+      </a>
+      <a href="retirement.html" class="latest-card">
+        <div class="latest-card-tag" style="color:#5c6b7a;background:#eef1f4">노후·가족</div>
+        <div class="latest-card-title">국민연금 예상 수령액 조회법과 임의가입 전략</div>
+        <div class="latest-card-date">2026.06.21</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  MoneyInfo.injectFooter();
+
+  function heroSearch() {
+    const q = document.getElementById('hero-search').value.trim();
+    if (q) window.location.href = 'calculator.html?q=' + encodeURIComponent(q);
+    else window.location.href = 'calculator.html';
+  }
+  function goSearch(q) {
+    window.location.href = 'calculator.html?q=' + encodeURIComponent(q);
+  }
+  document.getElementById('hero-search').addEventListener('keydown', e => {
+    if (e.key === 'Enter') heroSearch();
+  });
+</script>
+</body>
+</html>

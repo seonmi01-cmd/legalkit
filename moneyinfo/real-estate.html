@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko" data-base="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부동산 — 머니인포</title>
+  <meta name="description" content="취득세·종부세·청약·전월세·정책 등 부동산 최신 정보. 실수요자를 위한 체크포인트를 확인하세요.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script src="js/main.js"></script>
+<script>
+  MoneyInfo.injectHeader('real-estate.html');
+  MoneyInfo.injectTicker();
+</script>
+
+<div class="intro-section">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">홈</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="current" style="color:#0c8599">부동산</span>
+    </nav>
+    <h1 class="intro-title">부동산</h1>
+    <p class="intro-desc">취득세·종부세·청약·전월세·정책 자금 등 부동산 최신 정보를 실수요자 관점에서 정리합니다.</p>
+    <div class="popular-chips" style="margin-top:4px">
+      <span class="topic-chip chip" data-topic="전체">전체</span>
+      <span class="topic-chip chip" data-topic="세금">세금</span>
+      <span class="topic-chip chip" data-topic="청약">청약</span>
+      <span class="topic-chip chip" data-topic="전월세">전월세</span>
+      <span class="topic-chip chip" data-topic="정책">정책</span>
+    </div>
+  </div>
+</div>
+
+<section class="content-section">
+  <div class="container">
+    <div id="featured-wrap"></div>
+    <p class="articles-hd">최신 글</p>
+    <div class="articles-grid" id="rest-grid"></div>
+    <div class="load-more-wrap"><button class="load-more-btn">글 더보기</button></div>
+    <div style="display:none" aria-hidden="true">
+      <article data-topic="세금" data-date="2026.06.21" data-readtime="5분"
+        data-title="2026년 달라지는 취득세·종부세, 1주택자 체크포인트"
+        data-excerpt="세율 구간 변화와 1주택 실수요자가 놓치기 쉬운 부분을 짚었습니다."></article>
+      <article data-topic="청약" data-date="2026.06.20" data-readtime="5분"
+        data-title="6월 분양 단지 청약 일정과 가점 커트라인 전망"
+        data-excerpt="주요 단지 일정과 예상 경쟁률, 가점 전략을 정리했습니다."></article>
+      <article data-topic="전월세" data-date="2026.06.19" data-readtime="6분"
+        data-title="전세 사기 예방, 계약 전 반드시 확인할 5가지"
+        data-excerpt="등기부·보증보험·시세 확인까지 단계별 체크리스트입니다."></article>
+      <article data-topic="정책" data-date="2026.06.18" data-readtime="4분"
+        data-title="신생아 특례 대출 소득요건 완화 — 한도와 금리"
+        data-excerpt="대상 가구와 금리 구간, 기존 대출 대환 가능 여부를 정리했습니다."></article>
+      <article data-topic="세금" data-date="2026.06.17" data-readtime="5분"
+        data-title="양도소득세 비과세, 1세대 1주택 보유·거주 요건 정리"
+        data-excerpt="보유·거주 기간 계산과 일시적 2주택 비과세 조건을 설명합니다."></article>
+      <article data-topic="전월세" data-date="2026.06.16" data-readtime="4분"
+        data-title="전월세 전환율 6%, 내 보증금은 월세로 얼마?"
+        data-excerpt="전세를 월세로 바꿀 때 적정 환산액 계산법을 예시로 보여줍니다."></article>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const ACCENT = '#0c8599';
+  const ACCENT_BG = '#e6f4f6';
+
+  function buildFeatured(a) {
+    return `<div class="featured-card" style="cursor:pointer">
+      <div class="featured-meta">
+        <span class="badge-new" style="background:${ACCENT}">최신</span>
+        <span class="topic-pill" style="color:${ACCENT};background:${ACCENT_BG}">${a.topic}</span>
+        <span class="article-date">${a.date}</span>
+      </div>
+      <h2 class="featured-title">${a.title}</h2>
+      <p class="featured-excerpt">${a.excerpt}</p>
+      <p class="article-byline">${a.readtime} 읽기 · 머니인포 편집팀</p>
+    </div>`;
+  }
+
+  function buildCard(a) {
+    return `<div class="article-card" style="cursor:pointer">
+      <div class="article-card-meta">
+        <span class="topic-pill" style="color:${ACCENT};background:${ACCENT_BG}">${a.topic}</span>
+        <span class="article-date">${a.date}</span>
+      </div>
+      <h3 class="article-title">${a.title}</h3>
+      <p class="article-excerpt">${a.excerpt}</p>
+      <p class="article-read">${a.readtime} 읽기</p>
+    </div>`;
+  }
+
+  const rawArticles = Array.from(document.querySelectorAll('[data-title]')).map(el => ({
+    topic: el.dataset.topic, date: el.dataset.date, readtime: el.dataset.readtime,
+    title: el.dataset.title, excerpt: el.dataset.excerpt,
+  }));
+
+  function render(topic) {
+    const filtered = topic === '전체' ? rawArticles : rawArticles.filter(a => a.topic === topic);
+    if (!filtered.length) return;
+    document.getElementById('featured-wrap').innerHTML = buildFeatured(filtered[0]);
+    document.getElementById('rest-grid').innerHTML = filtered.slice(1).map(buildCard).join('');
+    document.querySelectorAll('.topic-chip').forEach(c => {
+      const isActive = c.dataset.topic === topic;
+      c.style.color = isActive ? ACCENT : '';
+      c.style.background = isActive ? ACCENT_BG : '';
+      c.style.borderColor = isActive ? ACCENT : '';
+    });
+  }
+
+  document.querySelectorAll('.topic-chip').forEach(chip => {
+    chip.addEventListener('click', () => render(chip.dataset.topic));
+  });
+  render('전체');
+})();
+</script>
+<script>MoneyInfo.injectFooter();</script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko" data-base="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>정부지원금 — 머니인포</title>
+  <meta name="description" content="청년·주거·창업·육아 등 정부지원금 최신 정보. 대상·금액·신청법을 쉽게 확인하세요.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      --accent: #0ca678;
+      --accent-bg: #e9f8f1;
+      --accent-border: #c4ebda;
+    }
+  </style>
+</head>
+<body>
+
+<script src="js/main.js"></script>
+<script>
+  MoneyInfo.injectHeader('gov-support.html');
+  MoneyInfo.injectTicker();
+</script>
+
+<!-- ===== 인트로 ===== -->
+<div class="intro-section">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">홈</a>
+      <span class="breadcrumb-sep">›</span>
+      <span class="current" style="color:var(--accent)">정부지원금</span>
+    </nav>
+    <h1 class="intro-title">정부지원금</h1>
+    <p class="intro-desc">청년·주거·창업·육아 분야의 정부지원금 최신 정보를 쉽고 빠르게 확인하세요. 대상·금액·신청 방법까지 한눈에.</p>
+    <div class="popular-chips" style="margin-top:4px">
+      <span class="topic-chip chip" data-topic="전체" style="--chip-accent:var(--accent)">전체</span>
+      <span class="topic-chip chip" data-topic="청년">청년</span>
+      <span class="topic-chip chip" data-topic="주거">주거</span>
+      <span class="topic-chip chip" data-topic="창업·소상공인">창업·소상공인</span>
+      <span class="topic-chip chip" data-topic="육아">육아</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 글 목록 ===== -->
+<section class="content-section">
+  <div class="container">
+    <!-- Featured -->
+    <div id="featured-wrap"></div>
+
+    <!-- Rest -->
+    <p class="articles-hd">최신 글</p>
+    <div class="articles-grid" id="rest-grid"></div>
+    <div class="load-more-wrap">
+      <button class="load-more-btn">글 더보기</button>
+    </div>
+
+    <!-- Hidden article data -->
+    <div style="display:none" aria-hidden="true">
+      <article data-topic="청년" data-date="2026.06.21" data-readtime="5분"
+        data-title="2026년 청년도약계좌, 5년 만기 수령액과 가입 조건 총정리"
+        data-excerpt="정부기여금 한도와 비과세 혜택까지, 5천만원 목표 달성 시나리오를 정리했습니다."></article>
+      <article data-topic="주거" data-date="2026.06.20" data-readtime="4분"
+        data-title="청년 월세 한시 특별지원 재개 — 신청 자격과 지원 금액"
+        data-excerpt="대상 연령·소득 요건과 최대 지원 한도, 신청 기간을 한눈에 확인하세요."></article>
+      <article data-topic="창업·소상공인" data-date="2026.06.19" data-readtime="6분"
+        data-title="소상공인 정책자금 6월 접수 시작, 금리·한도 한눈에"
+        data-excerpt="운전자금·시설자금 구분과 신청 절차, 우대금리 조건을 정리했습니다."></article>
+      <article data-topic="육아" data-date="2026.06.18" data-readtime="4분"
+        data-title="부모급여 100만원 시대, 2026년 지급 일정과 신청법"
+        data-excerpt="0세·1세 지급액 차이와 어린이집 이용 시 차액 지급 방식을 설명합니다."></article>
+      <article data-topic="청년" data-date="2026.06.17" data-readtime="5분"
+        data-title="국민취업지원제도 구직촉진수당, 대상 확대 핵심 정리"
+        data-excerpt="1유형·2유형 차이와 월 지급액, 취업활동 의무 사항을 짚었습니다."></article>
+      <article data-topic="주거" data-date="2026.06.16" data-readtime="5분"
+        data-title="버팀목 전세자금대출 금리 인하, 누가 얼마나 받나"
+        data-excerpt="소득별 금리 구간과 한도 변화, 청년 전용 우대 조건을 비교했습니다."></article>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const ACCENT = '#0ca678';
+  const ACCENT_BG = '#e9f8f1';
+  const SECTION = '정부지원금';
+
+  function buildFeatured(a) {
+    return `<div class="featured-card" style="cursor:pointer">
+      <div class="featured-meta">
+        <span class="badge-new" style="background:${ACCENT}">최신</span>
+        <span class="topic-pill" style="color:${ACCENT};background:${ACCENT_BG}">${a.topic}</span>
+        <span class="article-date">${a.date}</span>
+      </div>
+      <h2 class="featured-title">${a.title}</h2>
+      <p class="featured-excerpt">${a.excerpt}</p>
+      <p class="article-byline">${a.readtime} 읽기 · 머니인포 편집팀</p>
+    </div>`;
+  }
+
+  function buildCard(a) {
+    return `<div class="article-card" style="cursor:pointer">
+      <div class="article-card-meta">
+        <span class="topic-pill" style="color:${ACCENT};background:${ACCENT_BG}">${a.topic}</span>
+        <span class="article-date">${a.date}</span>
+      </div>
+      <h3 class="article-title">${a.title}</h3>
+      <p class="article-excerpt">${a.excerpt}</p>
+      <p class="article-read">${a.readtime} 읽기</p>
+    </div>`;
+  }
+
+  const rawArticles = Array.from(document.querySelectorAll('[data-title]')).map(el => ({
+    topic: el.dataset.topic,
+    date: el.dataset.date,
+    readtime: el.dataset.readtime,
+    title: el.dataset.title,
+    excerpt: el.dataset.excerpt,
+  }));
+
+  function render(topic) {
+    const filtered = topic === '전체' ? rawArticles : rawArticles.filter(a => a.topic === topic);
+    if (!filtered.length) return;
+    document.getElementById('featured-wrap').innerHTML = buildFeatured(filtered[0]);
+    document.getElementById('rest-grid').innerHTML = filtered.slice(1).map(buildCard).join('');
+    document.querySelectorAll('.topic-chip').forEach(c => {
+      const isActive = c.dataset.topic === topic;
+      c.style.color = isActive ? ACCENT : '';
+      c.style.background = isActive ? ACCENT_BG : '';
+      c.style.borderColor = isActive ? ACCENT : '';
+    });
+  }
+
+  document.querySelectorAll('.topic-chip').forEach(chip => {
+    chip.addEventListener('click', () => render(chip.dataset.topic));
+  });
+
+  render('전체');
+})();
+</script>
+
+<script>
+  MoneyInfo.injectFooter();
+</script>
+</body>
+</html>
