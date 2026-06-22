@@ -53,17 +53,17 @@
     <!-- 협업 유형 -->
     <div class="mi-contact-types">
       <div class="mi-contact-type-card">
-        <div class="mi-contact-type-icon">📢</div>
+        <div class="mi-contact-type-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a5 5 0 0 1 0 8"/><path d="M14 10.5a2 2 0 0 1 0 3"/><path d="M3 11v2a1 1 0 0 0 1 1h2l4 4V7L6 11H4a1 1 0 0 0-1 1z"/></svg></div>
         <h4>광고 게재</h4>
         <p>배너·콘텐츠 광고 등 다양한 광고 형식을 검토합니다. 금융·부동산·보험 관련 업종을 우대합니다.</p>
       </div>
       <div class="mi-contact-type-card">
-        <div class="mi-contact-type-icon">🤝</div>
+        <div class="mi-contact-type-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h4>콘텐츠 제휴</h4>
         <p>금융 정보, 시뮬레이터, 계산기 등 콘텐츠 공동 제작 또는 상호 링크 제휴를 논의합니다.</p>
       </div>
       <div class="mi-contact-type-card">
-        <div class="mi-contact-type-icon">💡</div>
+        <div class="mi-contact-type-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26A7 7 0 0 1 12 2z"/></svg></div>
         <h4>기타 협업</h4>
         <p>서비스 기획·데이터 제공·API 연동 등 다양한 협업 제안도 언제든지 환영합니다.</p>
       </div>

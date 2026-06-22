@@ -905,7 +905,8 @@ body.mi-calc-child > #page { padding-top: 0 !important; }
   padding: 28px 24px;
   background: #fff;
 }
-.mi-about-icon { font-size: 32px; margin-bottom: 14px; }
+.mi-about-icon { font-size: 32px; margin-bottom: 14px; color: #3a7bd5; }
+.mi-about-icon svg { display: block; }
 .mi-about-value-card h3 {
   font-size: 17px;
   font-weight: 800;
@@ -1109,7 +1110,8 @@ body.mi-calc-child > #page { padding-top: 0 !important; }
   background: #fff;
   text-align: center;
 }
-.mi-contact-type-icon { font-size: 28px; margin-bottom: 12px; }
+.mi-contact-type-icon { font-size: 28px; margin-bottom: 12px; color: #3a7bd5; }
+.mi-contact-type-icon svg { display: block; }
 .mi-contact-type-card h4 {
   font-size: 16px;
   font-weight: 800;
