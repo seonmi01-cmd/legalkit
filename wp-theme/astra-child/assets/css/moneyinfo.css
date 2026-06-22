@@ -112,7 +112,7 @@ body.mi-calc-child > #page { padding-top: 0 !important; }
   display: flex;
   align-items: center;
   gap: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 .mi-ticker-live {
   display: flex;
