@@ -625,14 +625,18 @@ body.admin-bar .mi-header-wrap { top: 32px; }
 }
 .mi-chip:hover { border-color: var(--navy); color: var(--navy); }
 
-/* 스티키 분야 탭 */
+/* 스티키 분야 탭 - 헤더(68) + 시세 띠(42) 아래에 위치 */
 .mi-sticky-nav {
   position: sticky;
-  top: 68px;
+  top: 110px;
   z-index: 90;
   background: #fff;
   border-bottom: 1px solid var(--border);
   box-shadow: 0 1px 6px rgba(17,36,58,.04);
+}
+body.admin-bar .mi-sticky-nav { top: 142px; }
+@media (max-width: 782px) {
+  body.admin-bar .mi-sticky-nav { top: 156px; }
 }
 .mi-sticky-nav-inner {
   max-width: var(--max-w);
