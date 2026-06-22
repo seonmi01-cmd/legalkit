@@ -135,14 +135,16 @@ function miHeroChip(q) {
   function renderFeatured(post) {
     if (!featured || !post) return;
     featured.innerHTML =
-      '<div class="mi-featured-meta">'
+      '<a href="' + (post.url || '#') + '" class="mi-featured-link">'
+      + '<div class="mi-featured-meta">'
       + '<span class="mi-featured-badge">최신</span>'
       + '<span class="mi-featured-topic">' + post.topic + '</span>'
       + '<span class="mi-featured-date">' + post.date + '</span>'
       + '</div>'
       + '<h2 class="mi-featured-title">' + post.title + '</h2>'
       + '<p class="mi-featured-excerpt">' + post.excerpt + '</p>'
-      + '<div class="mi-featured-byline">' + post.readtime + '분 읽기 · 머니인포 편집팀</div>';
+      + '<div class="mi-featured-byline">' + post.readtime + '분 읽기 · 머니인포 편집팀</div>'
+      + '</a>';
   }
 
   function renderGrid(posts) {

@@ -721,6 +721,8 @@ body.mi-calc-child > #page { padding-top: 0 !important; }
 }
 
 /* 대표글 카드 */
+.mi-featured-link { display: block; color: inherit; text-decoration: none; }
+.mi-featured-link:hover { color: inherit; }
 .mi-featured-card {
   border: 1px solid var(--border);
   border-radius: 10px;
