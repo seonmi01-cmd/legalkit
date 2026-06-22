@@ -2,7 +2,7 @@
 add_action('wp_enqueue_scripts', function() {
     wp_enqueue_style('astra-parent', get_template_directory_uri() . '/style.css');
     wp_enqueue_style('moneyinfo-style', get_stylesheet_directory_uri() . '/assets/css/moneyinfo.css', [], '1.5');
-    wp_enqueue_script('moneyinfo-js', get_stylesheet_directory_uri() . '/assets/js/moneyinfo.js', [], '1.0', true);
+    wp_enqueue_script('moneyinfo-js', get_stylesheet_directory_uri() . '/assets/js/moneyinfo.js', [], '1.2', true);
 });
 
 // 실시간 환율 AJAX (서버사이드 fallback)
