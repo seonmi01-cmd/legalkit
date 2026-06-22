@@ -280,10 +280,14 @@ if (!$calc_url) $calc_url = home_url('/calculator/');
     <div class="mi-footer-col">
       <h4>머니인포</h4>
       <ul>
-        <li><a href="#">서비스 소개</a></li>
-        <li><a href="#">이용약관</a></li>
-        <li><a href="#">개인정보처리방침</a></li>
-        <li><a href="#">광고·제휴 문의</a></li>
+        <?php
+        $footer_pages = ['about'=>'서비스 소개','terms'=>'이용약관','privacy'=>'개인정보처리방침','contact'=>'광고·제휴 문의'];
+        foreach ($footer_pages as $slug => $label):
+          $p = get_page_by_path($slug);
+          $url = $p ? get_permalink($p) : home_url('/' . $slug . '/');
+        ?>
+        <li><a href="<?php echo esc_url($url); ?>"><?php echo esc_html($label); ?></a></li>
+        <?php endforeach; ?>
       </ul>
     </div>
   </div>
