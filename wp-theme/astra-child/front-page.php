@@ -31,7 +31,7 @@ if (!$calc_url) $calc_url = home_url('/calculator/');
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5b6876" stroke-width="2" stroke-linecap="round">
           <circle cx="11" cy="11" r="7"/><line x1="20.5" y1="20.5" x2="16.5" y2="16.5"/>
         </svg>
-        <input id="mi-hero-search" type="text" placeholder="예) 연봉 5,000만원 실수령액이 궁금해요" autocomplete="off">
+        <input id="mi-hero-search" type="text" placeholder="예) 연봉 실수령액, 취득세, 양도세" autocomplete="off">
         <button class="mi-search-btn" onclick="miHeroSearch()">검색</button>
       </div>
       <div class="mi-hero-popular">
