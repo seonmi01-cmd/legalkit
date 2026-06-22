@@ -68,3 +68,109 @@ add_filter('theme_page_templates', function($templates) {
     $templates['pages/page-contact.php']     = '광고·제휴 문의';
     return $templates;
 });
+
+// ===== SEO 메타데이터 중앙 처리 =====
+function mi_seo_data() {
+    $og_image = get_stylesheet_directory_uri() . '/assets/og-image.png';
+    $defaults = [
+        'title'       => '머니인포',
+        'description' => '취득세·연봉 실수령액·연말정산·대출이자 등 금융 계산기 41종을 한곳에서 빠르게 사용해보세요.',
+        'og_type'     => 'website',
+        'og_image'    => $og_image,
+        'url'         => home_url('/'),
+    ];
+
+    if (is_front_page() || is_home()) {
+        $defaults['title']       = '머니인포 — 복잡한 돈 계산, 1분이면 끝납니다';
+        $defaults['description'] = '취득세·연봉 실수령액·연말정산·대출이자 등 금융 계산기 41종을 한곳에. 정부지원금·세금·부동산·재테크·노후 정보까지.';
+        $defaults['url']         = home_url('/');
+        return $defaults;
+    }
+
+    if (is_page_template('page-calculator.php')) {
+        $defaults['title']       = '금융 계산기 41종 — 머니인포';
+        $defaults['description'] = '취득세·연봉 실수령액·연말정산·대출이자 등 금융 계산기 41종. 7개 분야 검색으로 빠르게 찾으세요.';
+        $defaults['url']         = get_permalink();
+        return $defaults;
+    }
+
+    if (is_category()) {
+        $cat_desc = [
+            'gov-support' => '청년도약계좌·복지지원금 등 정부지원금 최신 정보를 한눈에 확인하세요.',
+            'tax'         => '연말정산·종합소득세·양도세 등 세금 절세 전략과 최신 세법 변경사항을 정리합니다.',
+            'real-estate' => '취득세·종부세·청약 등 부동산 시장의 최신 정책과 투자 정보를 분석합니다.',
+            'invest'      => '예금·주식·ETF·ISA 등 재테크 전략과 금리 비교 정보를 매주 업데이트합니다.',
+            'retirement'  => '국민연금·퇴직연금·노후 준비 전략과 가족·생활 금융 정보를 제공합니다.',
+        ];
+        $cat = get_queried_object();
+        if ($cat) {
+            $defaults['title']       = $cat->name . ' — 머니인포';
+            $defaults['description'] = $cat_desc[$cat->slug] ?? ($cat->description ?: $defaults['description']);
+            $defaults['url']         = get_category_link($cat);
+        }
+        return $defaults;
+    }
+
+    if (is_single()) {
+        $cats     = get_the_category();
+        $cat_name = $cats ? $cats[0]->name : '';
+        $title    = get_the_title();
+        $defaults['title']       = $title . ($cat_name ? ' — ' . $cat_name : '') . ' — 머니인포';
+        $excerpt = get_the_excerpt();
+        if (!$excerpt) {
+            $excerpt = wp_strip_all_tags(get_the_content(), true);
+        }
+        $defaults['description'] = mb_substr(trim(preg_replace('/\s+/u', ' ', $excerpt)), 0, 155);
+        $defaults['url']         = get_permalink();
+        $defaults['og_type']     = 'article';
+        $thumb = get_the_post_thumbnail_url(get_the_ID(), 'large');
+        if ($thumb) $defaults['og_image'] = $thumb;
+        return $defaults;
+    }
+
+    if (is_page()) {
+        $title = get_the_title();
+        if (mi_is_calc_child()) {
+            $base = preg_replace('/\s*계산기\s*$/u', '', $title);
+            $defaults['title']       = $base . ' 계산기 — 머니인포';
+            $defaults['description'] = $base . ' 계산기 — 머니인포에서 빠르고 정확하게 계산해보세요. 무료, 가입 없이 바로 사용 가능합니다.';
+        } else {
+            $defaults['title'] = $title . ' — 머니인포';
+            $excerpt = get_the_excerpt();
+            if ($excerpt) {
+                $defaults['description'] = mb_substr(trim(preg_replace('/\s+/u', ' ', $excerpt)), 0, 155);
+            }
+        }
+        $defaults['url'] = get_permalink();
+        return $defaults;
+    }
+
+    return $defaults;
+}
+
+// 타이틀 태그를 SEO 함수에서 생성
+add_filter('pre_get_document_title', function() {
+    $data = mi_seo_data();
+    return $data['title'];
+}, 99);
+
+// wp_head에 메타 태그 출력
+add_action('wp_head', function() {
+    $data = mi_seo_data();
+    $site = get_bloginfo('name');
+    echo "\n<!-- 머니인포 SEO -->\n";
+    printf('<meta name="description" content="%s">' . "\n", esc_attr($data['description']));
+    printf('<meta property="og:type" content="%s">' . "\n", esc_attr($data['og_type']));
+    printf('<meta property="og:site_name" content="%s">' . "\n", esc_attr($site));
+    printf('<meta property="og:title" content="%s">' . "\n", esc_attr($data['title']));
+    printf('<meta property="og:description" content="%s">' . "\n", esc_attr($data['description']));
+    printf('<meta property="og:url" content="%s">' . "\n", esc_url($data['url']));
+    printf('<meta property="og:image" content="%s">' . "\n", esc_url($data['og_image']));
+    echo '<meta property="og:image:width" content="1200">' . "\n";
+    echo '<meta property="og:image:height" content="630">' . "\n";
+    echo '<meta property="og:locale" content="ko_KR">' . "\n";
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    printf('<meta name="twitter:title" content="%s">' . "\n", esc_attr($data['title']));
+    printf('<meta name="twitter:description" content="%s">' . "\n", esc_attr($data['description']));
+    printf('<meta name="twitter:image" content="%s">' . "\n", esc_url($data['og_image']));
+}, 1);

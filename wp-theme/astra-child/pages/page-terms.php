@@ -9,7 +9,6 @@ $updated = '2026년 6월 22일';
 <head>
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>이용약관 — <?php bloginfo('name'); ?></title>
   <?php wp_head(); ?>
 </head>
 <body <?php body_class('mi-custom-page'); ?>>

@@ -12,8 +12,6 @@ $calc_url = get_permalink();
 <head>
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>금융 계산기 41종 — <?php bloginfo('name'); ?></title>
-  <meta name="description" content="취득세·연봉 실수령액·연말정산·대출이자 등 금융 계산기 41종. 8개 분야 검색으로 빠르게 찾으세요.">
   <style>html { scroll-behavior: smooth; } .mi-calc-section-block { scroll-margin-top: 140px; }</style>
   <?php wp_head(); ?>
 </head>

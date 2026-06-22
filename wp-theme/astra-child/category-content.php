@@ -47,7 +47,6 @@ if ($use_dummy) {
 <head>
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?php echo esc_html($cat_name); ?> — <?php bloginfo('name'); ?></title>
   <style>
     :root {
       --accent:    <?php echo esc_attr($mi_accent ?? '#0ca678'); ?>;
