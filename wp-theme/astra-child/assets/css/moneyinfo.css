@@ -140,6 +140,7 @@ body.mi-calc-child > #page { padding-top: 0 !important; }
   gap: 26px;
   flex: 1;
   min-width: 0;
+  overflow: hidden;
 }
 .mi-ticker-item {
   display: flex;
@@ -157,14 +158,11 @@ body.mi-calc-child > #page { padding-top: 0 !important; }
   font-size: 11.5px;
   color: #62788f;
   white-space: nowrap;
-  position: absolute;
-  right: var(--px);
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--navy-dark);
-  padding-left: 12px;
+  flex-shrink: 0;
+  padding-left: 16px;
+  margin-left: 8px;
+  border-left: 1px solid rgba(255,255,255,.08);
 }
-.mi-ticker { position: relative; }
 
 @keyframes mi-pulse {
   0%, 100% { opacity: 1; }
