@@ -158,6 +158,9 @@ body.mi-calc-child > #page { padding-top: 0 !important; }
   color: #62788f;
   flex-shrink: 0;
   padding-left: 16px;
+  margin-left: auto;
+  border-left: 1px solid rgba(255,255,255,.1);
+  white-space: nowrap;
 }
 
 @keyframes mi-pulse {
