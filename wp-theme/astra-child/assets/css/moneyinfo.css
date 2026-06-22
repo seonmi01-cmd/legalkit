@@ -924,7 +924,7 @@ body.admin-bar .mi-sticky-nav { top: 142px; }
 }
 .mi-about-icon { font-size: 32px; margin-bottom: 14px; color: #3a7bd5; }
 .mi-about-icon svg { display: block; }
-.mi-about-value-card h3 {
+.mi-about-value-card h2 {
   font-size: 17px;
   font-weight: 800;
   color: var(--heading);

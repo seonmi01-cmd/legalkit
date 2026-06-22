@@ -35,17 +35,17 @@
     <section class="mi-about-values">
       <div class="mi-about-value-card">
         <div class="mi-about-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="12" y1="11" x2="14" y2="11"/><line x1="16" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="10" y2="15"/><line x1="12" y1="15" x2="14" y2="15"/><line x1="16" y1="15" x2="16" y2="15"/><line x1="8" y1="19" x2="10" y2="19"/><line x1="12" y1="19" x2="14" y2="19"/></svg></div>
-        <h3>금융 계산기 41종</h3>
+        <h2>금융 계산기 41종</h2>
         <p>취득세·연봉 실수령액·연말정산·대출이자·퇴직금까지. 부동산·세금·직장인·대출·투자·청약·가족 7개 분야 41종의 계산기를 무료로 제공합니다.</p>
       </div>
       <div class="mi-about-value-card">
         <div class="mi-about-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><line x1="10" y1="7" x2="18" y2="7"/><line x1="10" y1="11" x2="18" y2="11"/><line x1="10" y1="15" x2="14" y2="15"/></svg></div>
-        <h3>매일 업데이트되는 금융 정보</h3>
+        <h2>매일 업데이트되는 금융 정보</h2>
         <p>정부지원금·세금·부동산·재테크·노후 5개 분야의 최신 정보를 매일 정리합니다. 복잡한 정책 변화를 쉬운 언어로 풀어드립니다.</p>
       </div>
       <div class="mi-about-value-card">
         <div class="mi-about-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
-        <h3>신뢰할 수 있는 출처</h3>
+        <h2>신뢰할 수 있는 출처</h2>
         <p>국세청·국토교통부·금융감독원 등 공식 출처를 기반으로 작성합니다. 모든 계산 결과에는 참고 기준과 면책 안내를 명시합니다.</p>
       </div>
     </section>
