@@ -317,3 +317,21 @@ add_action('wp_head', function() {
     }
     echo "\n";
 }, 2);
+
+// ===== 사이트맵 + robots.txt 보강 =====
+// 저자(users) 사이트맵 제거 - SEO 가치 없음 + 사용자명 노출 방지
+add_filter('wp_sitemaps_add_provider', function($provider, $name) {
+    return $name === 'users' ? false : $provider;
+}, 10, 2);
+
+// robots.txt에 검색/xmlrpc 차단 추가
+add_filter('robots_txt', function($output, $public) {
+    if ($public != '1') return $output;
+    $extra = "Disallow: /?s=\nDisallow: /xmlrpc.php\n";
+    if (strpos($output, "\nSitemap:") !== false) {
+        $output = str_replace("\nSitemap:", "\n" . $extra . "\nSitemap:", $output);
+    } else {
+        $output .= "\n" . $extra;
+    }
+    return $output;
+}, 10, 2);
