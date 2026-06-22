@@ -156,12 +156,15 @@ body.mi-calc-child > #page { padding-top: 0 !important; }
 .mi-ticker-time {
   font-size: 11.5px;
   color: #62788f;
-  flex-shrink: 0;
-  padding-left: 16px;
-  margin-left: auto;
-  border-left: 1px solid rgba(255,255,255,.1);
   white-space: nowrap;
+  position: absolute;
+  right: var(--px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--navy-dark);
+  padding-left: 12px;
 }
+.mi-ticker { position: relative; }
 
 @keyframes mi-pulse {
   0%, 100% { opacity: 1; }
