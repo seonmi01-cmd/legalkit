@@ -41,6 +41,15 @@ body.mi-custom-page #primary { padding: 0 !important; margin: 0 !important; }
 
 body.mi-custom-page #ast-scroll-top { display: none; }
 
+/* ===== 계산기 하위 페이지 여백 ===== */
+body.mi-calc-child #content.ast-container,
+body.mi-calc-child .ast-container { padding: 0 !important; max-width: 100% !important; }
+body.mi-calc-child .entry-content,
+body.mi-calc-child #primary { padding: 0 !important; margin: 0 !important; }
+body.mi-calc-child .site-content { padding-top: 0 !important; }
+body.mi-calc-child > #page { padding-top: 0 !important; }
+.mi-calc-child-wrap { padding: 48px 0 64px; }
+
 /* ===== 공통 헤더 ===== */
 .mi-header {
   background: var(--navy);

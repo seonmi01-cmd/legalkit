@@ -36,8 +36,12 @@ add_filter('body_class', function($classes) {
 add_action('wp_body_open', function() {
     if (mi_is_calc_child()) {
         include get_stylesheet_directory() . '/parts/header.php';
+        echo '<div class="mi-calc-child-wrap">';
     }
 }, 5);
+add_action('wp_footer', function() {
+    if (mi_is_calc_child()) echo '</div>';
+}, 4);
 add_action('wp_footer', function() {
     if (mi_is_calc_child()) {
         echo '<style>.site-footer,.ast-footer-widget-area,.footer-widget-area{display:none!important}</style>';
