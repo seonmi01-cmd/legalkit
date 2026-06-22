@@ -174,3 +174,146 @@ add_action('wp_head', function() {
     printf('<meta name="twitter:description" content="%s">' . "\n", esc_attr($data['description']));
     printf('<meta name="twitter:image" content="%s">' . "\n", esc_url($data['og_image']));
 }, 1);
+
+// ===== Schema.org JSON-LD =====
+function mi_breadcrumb_schema($items) {
+    $list = [];
+    foreach ($items as $i => $item) {
+        $list[] = [
+            '@type'    => 'ListItem',
+            'position' => $i + 1,
+            'name'     => $item[0],
+            'item'     => $item[1],
+        ];
+    }
+    return [
+        '@context'        => 'https://schema.org',
+        '@type'           => 'BreadcrumbList',
+        'itemListElement' => $list,
+    ];
+}
+
+add_action('wp_head', function() {
+    $data     = mi_seo_data();
+    $og_image = get_stylesheet_directory_uri() . '/assets/og-image.png';
+    $home     = home_url('/');
+
+    $organization = [
+        '@context' => 'https://schema.org',
+        '@type'    => 'Organization',
+        'name'     => '머니인포',
+        'url'      => $home,
+        'logo'     => $og_image,
+    ];
+
+    $schemas = [$organization];
+
+    if (is_front_page() || is_home()) {
+        $schemas[] = [
+            '@context' => 'https://schema.org',
+            '@type'    => 'WebSite',
+            'name'     => '머니인포',
+            'url'      => $home,
+            'potentialAction' => [
+                '@type'       => 'SearchAction',
+                'target'      => $home . 'calculator/?q={search_term_string}',
+                'query-input' => 'required name=search_term_string',
+            ],
+        ];
+    } elseif (is_page_template('page-calculator.php')) {
+        $schemas[] = mi_breadcrumb_schema([
+            ['홈', $home],
+            ['금융 계산기', get_permalink()],
+        ]);
+        $schemas[] = [
+            '@context'    => 'https://schema.org',
+            '@type'       => 'CollectionPage',
+            'name'        => '금융 계산기 41종',
+            'description' => $data['description'],
+            'url'         => get_permalink(),
+        ];
+    } elseif (is_category()) {
+        $cat = get_queried_object();
+        if ($cat) {
+            $schemas[] = mi_breadcrumb_schema([
+                ['홈', $home],
+                [$cat->name, get_category_link($cat)],
+            ]);
+            $schemas[] = [
+                '@context'    => 'https://schema.org',
+                '@type'       => 'CollectionPage',
+                'name'        => $cat->name,
+                'description' => $data['description'],
+                'url'         => get_category_link($cat),
+            ];
+        }
+    } elseif (is_single()) {
+        $cats     = get_the_category();
+        $cat      = $cats ? $cats[0] : null;
+        $bc_items = [['홈', $home]];
+        if ($cat) $bc_items[] = [$cat->name, get_category_link($cat)];
+        $bc_items[]  = [get_the_title(), get_permalink()];
+        $schemas[]   = mi_breadcrumb_schema($bc_items);
+        $schemas[]   = [
+            '@context'      => 'https://schema.org',
+            '@type'         => 'Article',
+            'headline'      => get_the_title(),
+            'description'   => $data['description'],
+            'datePublished' => get_the_date('c'),
+            'dateModified'  => get_the_modified_date('c'),
+            'author'        => ['@type' => 'Organization', 'name' => '머니인포 편집팀'],
+            'publisher'     => $organization,
+            'image'         => $data['og_image'],
+            'mainEntityOfPage' => [
+                '@type' => 'WebPage',
+                '@id'   => get_permalink(),
+            ],
+        ];
+    } elseif (is_page()) {
+        if (mi_is_calc_child()) {
+            $title = get_the_title();
+            $base  = preg_replace('/\s*계산기\s*$/u', '', $title);
+            $calc_parent = get_page_by_path('calculator');
+            $calc_url    = $calc_parent ? get_permalink($calc_parent) : ($home . 'calculator/');
+            $schemas[] = mi_breadcrumb_schema([
+                ['홈', $home],
+                ['금융 계산기', $calc_url],
+                [$base . ' 계산기', get_permalink()],
+            ]);
+            $schemas[] = [
+                '@context'            => 'https://schema.org',
+                '@type'               => 'WebApplication',
+                'name'                => $base . ' 계산기',
+                'url'                 => get_permalink(),
+                'description'         => $data['description'],
+                'applicationCategory' => 'FinanceApplication',
+                'operatingSystem'     => 'All',
+                'offers'              => [
+                    '@type'         => 'Offer',
+                    'price'         => '0',
+                    'priceCurrency' => 'KRW',
+                ],
+                'provider' => $organization,
+            ];
+        } else {
+            $schemas[] = mi_breadcrumb_schema([
+                ['홈', $home],
+                [get_the_title(), get_permalink()],
+            ]);
+            $schemas[] = [
+                '@context'    => 'https://schema.org',
+                '@type'       => 'WebPage',
+                'name'        => get_the_title(),
+                'description' => $data['description'],
+                'url'         => get_permalink(),
+            ];
+        }
+    }
+
+    foreach ($schemas as $s) {
+        echo "\n" . '<script type="application/ld+json">'
+           . wp_json_encode($s, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)
+           . '</script>';
+    }
+    echo "\n";
+}, 2);
