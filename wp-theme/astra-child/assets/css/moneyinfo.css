@@ -845,3 +845,290 @@ body.mi-custom-page #ast-scroll-top { display: none; }
   .mi-hero h1 { font-size: 28px; }
   .mi-page-title { font-size: 24px; }
 }
+
+/* ===== 정적 페이지 공통 (서비스소개·약관·방침·문의) ===== */
+.mi-static-wrap { background: #fff; min-height: 60vh; }
+
+.mi-static-hero {
+  background: linear-gradient(160deg, #11243a 0%, #16324f 100%);
+  color: #fff;
+  padding: 52px 0 56px;
+}
+.mi-static-hero--sm { padding: 36px 0 40px; }
+
+.mi-static-title {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0 0 14px;
+  color: #fff;
+  line-height: 1.25;
+}
+.mi-static-lead {
+  font-size: 17px;
+  color: #b9c5d2;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 620px;
+}
+
+.mi-static-body {
+  padding-top: 52px;
+  padding-bottom: 72px;
+}
+
+/* ===== 서비스 소개 ===== */
+.mi-about-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 56px;
+}
+.mi-about-value-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px 24px;
+  background: #fff;
+}
+.mi-about-icon { font-size: 32px; margin-bottom: 14px; }
+.mi-about-value-card h3 {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--heading);
+  margin: 0 0 10px;
+}
+.mi-about-value-card p {
+  font-size: 14px;
+  color: var(--body);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.mi-about-section-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+
+.mi-about-maker { margin-bottom: 48px; }
+.mi-about-maker-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 32px;
+  background: var(--section-bg);
+}
+.mi-about-maker-logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+.mi-about-maker-card p {
+  font-size: 15px;
+  color: var(--body);
+  line-height: 1.75;
+  margin: 0 0 20px;
+}
+.mi-about-maker-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.mi-about-maker-links a {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green);
+  text-decoration: none;
+}
+.mi-about-maker-links a:hover { text-decoration: underline; }
+
+.mi-about-disclaimer { margin-bottom: 0; }
+.mi-about-list {
+  padding-left: 20px;
+  margin: 0;
+}
+.mi-about-list li {
+  font-size: 14.5px;
+  color: var(--body);
+  line-height: 1.75;
+  margin-bottom: 8px;
+}
+
+/* ===== 법률 문서 (약관·방침) ===== */
+.mi-legal-body section {
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--border);
+}
+.mi-legal-body section:last-of-type { border-bottom: none; }
+.mi-legal-body h2 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+.mi-legal-body p {
+  font-size: 14.5px;
+  color: var(--body);
+  line-height: 1.85;
+  margin: 0 0 10px;
+}
+.mi-legal-body ul, .mi-legal-body ol {
+  padding-left: 20px;
+  margin: 0 0 10px;
+}
+.mi-legal-body li {
+  font-size: 14.5px;
+  color: var(--body);
+  line-height: 1.85;
+  margin-bottom: 6px;
+}
+.mi-legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+.mi-legal-table th, .mi-legal-table td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+.mi-legal-table th {
+  background: var(--section-bg);
+  font-weight: 700;
+  color: var(--heading);
+  width: 120px;
+}
+.mi-legal-table td { color: var(--body); }
+.mi-legal-table a { color: var(--green); text-decoration: none; }
+
+.mi-legal-contact {
+  margin-top: 40px;
+  padding: 20px 24px;
+  background: var(--section-bg);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--body);
+}
+.mi-legal-contact p { margin: 0; }
+.mi-legal-contact a { color: var(--green); font-weight: 700; text-decoration: none; }
+
+/* ===== 광고·제휴 문의 ===== */
+.mi-contact-card {
+  text-align: center;
+  padding: 48px 32px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 36px;
+  background: var(--section-bg);
+}
+.mi-contact-icon { font-size: 40px; margin-bottom: 16px; }
+.mi-contact-card h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 16px;
+}
+.mi-contact-email {
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green);
+  text-decoration: none;
+  padding: 14px 36px;
+  border: 2px solid var(--green);
+  border-radius: 8px;
+  transition: all .15s;
+  margin-bottom: 16px;
+}
+.mi-contact-email:hover {
+  background: var(--green);
+  color: #fff;
+}
+.mi-contact-guide {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.mi-contact-guide-box {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin-bottom: 36px;
+  background: #fff;
+}
+.mi-contact-guide-box h3 {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--heading);
+  margin: 0 0 16px;
+}
+.mi-contact-guide-box ol {
+  padding-left: 20px;
+  margin: 0;
+}
+.mi-contact-guide-box li {
+  font-size: 14.5px;
+  color: var(--body);
+  line-height: 1.8;
+  margin-bottom: 6px;
+}
+
+.mi-contact-types {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.mi-contact-type-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  background: #fff;
+  text-align: center;
+}
+.mi-contact-type-icon { font-size: 28px; margin-bottom: 12px; }
+.mi-contact-type-card h4 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--heading);
+  margin: 0 0 8px;
+}
+.mi-contact-type-card p {
+  font-size: 13.5px;
+  color: var(--body);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.mi-contact-maker {
+  background: var(--navy-dark);
+  border-radius: 10px;
+  padding: 28px 32px;
+  color: #8fa0b1;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.mi-contact-maker strong { color: #fff; }
+.mi-contact-maker a {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--mint);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+  .mi-about-values    { grid-template-columns: 1fr; }
+  .mi-contact-types   { grid-template-columns: 1fr; }
+  .mi-static-title    { font-size: 26px; }
+}

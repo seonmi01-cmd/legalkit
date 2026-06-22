@@ -19,6 +19,10 @@ function mi_ticker_handler() {
 
 // 머니인포 페이지 템플릿 등록
 add_filter('theme_page_templates', function($templates) {
-    $templates['page-calculator-tpl.php'] = '금융 계산기 목록';
+    $templates['page-calculator.php']        = '금융 계산기 목록';
+    $templates['pages/page-about.php']       = '서비스 소개';
+    $templates['pages/page-terms.php']       = '이용약관';
+    $templates['pages/page-privacy.php']     = '개인정보처리방침';
+    $templates['pages/page-contact.php']     = '광고·제휴 문의';
     return $templates;
 });
