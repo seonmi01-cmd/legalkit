@@ -1151,3 +1151,32 @@ body.mi-calc-child > #page { padding-top: 0 !important; }
   .mi-contact-types   { grid-template-columns: 1fr; }
   .mi-static-title    { font-size: 26px; }
 }
+
+/* === 단일 글(블로그 포스트) === */
+body.mi-single-post #content.ast-container,
+body.mi-single-post .ast-container { padding: 0 !important; max-width: 100% !important; }
+body.mi-single-post .entry-content,
+body.mi-single-post #primary { padding: 0 !important; margin: 0 !important; }
+body.mi-single-post .site-content { padding-top: 0 !important; }
+body.mi-single-post > #page { padding-top: 0 !important; }
+.mi-single-wrap { padding: 48px 0 64px; background: #f7f9fb; min-height: 60vh; }
+.mi-single-inner { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+.mi-single-head { margin: 24px 0 28px; }
+.mi-single-title {
+  font-size: 32px; font-weight: 800; line-height: 1.35;
+  color: var(--heading, #11243a); letter-spacing: -0.02em; margin: 0 0 14px;
+}
+.mi-single-meta { font-size: 14px; color: #6b7886; display: flex; gap: 8px; }
+.mi-single-content {
+  background: #fff; border: 1px solid var(--border, #e5eaef); border-radius: 10px;
+  padding: 36px 40px; font-size: 16px; line-height: 1.8; color: #2c3845;
+}
+.mi-single-content h2 { font-size: 22px; font-weight: 700; margin: 32px 0 14px; color: var(--heading, #11243a); }
+.mi-single-content h3 { font-size: 18px; font-weight: 700; margin: 26px 0 12px; color: var(--heading, #11243a); }
+.mi-single-content p  { margin: 0 0 16px; }
+.mi-single-content ul, .mi-single-content ol { margin: 0 0 16px; padding-left: 24px; }
+.mi-single-content img { max-width: 100%; height: auto; border-radius: 6px; }
+@media (max-width: 640px) {
+  .mi-single-title { font-size: 24px; }
+  .mi-single-content { padding: 22px 18px; font-size: 15px; }
+}

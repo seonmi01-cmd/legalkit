@@ -1,7 +1,7 @@
 <?php
 add_action('wp_enqueue_scripts', function() {
     wp_enqueue_style('astra-parent', get_template_directory_uri() . '/style.css');
-    wp_enqueue_style('moneyinfo-style', get_stylesheet_directory_uri() . '/assets/css/moneyinfo.css', [], '1.5');
+    wp_enqueue_style('moneyinfo-style', get_stylesheet_directory_uri() . '/assets/css/moneyinfo.css', [], '1.6');
     wp_enqueue_script('moneyinfo-js', get_stylesheet_directory_uri() . '/assets/js/moneyinfo.js', [], '1.2', true);
 });
 
@@ -26,10 +26,17 @@ function mi_is_calc_child() {
     $ancestors = get_post_ancestors($post);
     return in_array($calc_id, $ancestors) || $post->post_parent == $calc_id;
 }
+// 단일 글(블로그 포스트)에도 커스텀 헤더/푸터 적용
+function mi_use_custom_chrome() {
+    return mi_is_calc_child() || is_single();
+}
 add_filter('body_class', function($classes) {
     if (mi_is_calc_child()) {
         $classes[] = 'mi-custom-page';
         $classes[] = 'mi-calc-child';
+    } elseif (is_single()) {
+        $classes[] = 'mi-custom-page';
+        $classes[] = 'mi-single-post';
     }
     return $classes;
 });
@@ -37,14 +44,17 @@ add_action('wp_body_open', function() {
     if (mi_is_calc_child()) {
         include get_stylesheet_directory() . '/parts/header.php';
         echo '<div class="mi-calc-child-wrap">';
+    } elseif (is_single()) {
+        include get_stylesheet_directory() . '/parts/header.php';
+        echo '<div class="mi-single-wrap">';
     }
 }, 5);
 add_action('wp_footer', function() {
-    if (mi_is_calc_child()) echo '</div>';
+    if (mi_use_custom_chrome()) echo '</div>';
 }, 4);
 add_action('wp_footer', function() {
-    if (mi_is_calc_child()) {
-        echo '<style>.site-footer,.ast-footer-widget-area,.footer-widget-area{display:none!important}</style>';
+    if (mi_use_custom_chrome()) {
+        echo '<style>.site-header,.ast-header,.ast-primary-header-bar,.site-footer,.ast-footer-widget-area,.footer-widget-area{display:none!important}</style>';
         include get_stylesheet_directory() . '/parts/footer.php';
     }
 }, 5);
