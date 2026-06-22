@@ -9,6 +9,7 @@ $nav_items = [
   'retirement'  => ['label' => '노후·가족',    'url' => get_category_link(get_category_by_slug('retirement')) ?: home_url('/category/retirement/')],
 ];
 ?>
+<div class="mi-header-wrap">
 <header class="mi-header">
   <div class="mi-header-inner">
     <a href="<?php echo home_url('/'); ?>" class="mi-logo">
@@ -40,4 +41,5 @@ $nav_items = [
     </div>
     <div class="mi-ticker-time" id="mi-ticker-time"></div>
   </div>
+</div>
 </div>

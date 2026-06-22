@@ -51,12 +51,18 @@ body.mi-calc-child > #page { padding-top: 0 !important; }
 .mi-calc-child-wrap { padding: 48px 0 64px; }
 
 /* ===== 공통 헤더 ===== */
-.mi-header {
-  background: var(--navy);
-  height: 68px;
+.mi-header-wrap {
   position: sticky;
   top: 0;
   z-index: 100;
+}
+body.admin-bar .mi-header-wrap { top: 32px; }
+@media (max-width: 782px) {
+  body.admin-bar .mi-header-wrap { top: 46px; }
+}
+.mi-header {
+  background: var(--navy);
+  height: 68px;
 }
 .mi-header-inner {
   max-width: var(--max-w);

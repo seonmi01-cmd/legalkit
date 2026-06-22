@@ -1,7 +1,7 @@
 <?php
 add_action('wp_enqueue_scripts', function() {
     wp_enqueue_style('astra-parent', get_template_directory_uri() . '/style.css');
-    wp_enqueue_style('moneyinfo-style', get_stylesheet_directory_uri() . '/assets/css/moneyinfo.css', [], '1.7');
+    wp_enqueue_style('moneyinfo-style', get_stylesheet_directory_uri() . '/assets/css/moneyinfo.css', [], '1.8');
     wp_enqueue_script('moneyinfo-js', get_stylesheet_directory_uri() . '/assets/js/moneyinfo.js', [], '1.2', true);
 });
 
